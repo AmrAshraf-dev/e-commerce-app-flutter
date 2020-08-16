@@ -1,6 +1,6 @@
-# ecommerce_app_flutter
+# e-commerce_app_flutter
 
-A new Flutter application.
+An e-commerce Flutter application.
 
 ## Getting Started
 
