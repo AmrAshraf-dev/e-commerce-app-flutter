@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>categories.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+.s1 { color: #6a8759;}
+.s2 { color: #cc7832;}
+.s3 { color: #808080;}
+.s4 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+categories.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:e_commerce_app_flutter/constants.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:flutter/material.dart'</span><span class="s2">;</span>
+<span class="s3">// stateful widget for categories</span>
+<span class="s2">class </span><span class="s0">Categories </span><span class="s2">extends </span><span class="s0">StatefulWidget {</span>
+  <span class="s0">@override</span>
+  <span class="s0">_CategoriesState createState() =&gt; _CategoriesState()</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+<span class="s2">class </span><span class="s0">_CategoriesState </span><span class="s2">extends </span><span class="s0">State&lt;Categories&gt; {</span>
+  <span class="s0">List &lt;String&gt; categories = [</span><span class="s1">&quot;Hand bag&quot;</span><span class="s2">,</span><span class="s1">&quot;Jewellery&quot;</span><span class="s2">,</span><span class="s1">&quot;Footwear&quot;</span><span class="s2">,</span><span class="s1">&quot;Dresses&quot;</span><span class="s0">]</span><span class="s2">;</span>
+  <span class="s3">// by default our selected items will be selected</span>
+  <span class="s0">int selectedIndex = </span><span class="s4">0</span><span class="s2">;</span>
+
+  <span class="s0">@override</span>
+  <span class="s0">Widget build(BuildContext context) {</span>
+    <span class="s2">final </span><span class="s0">width = MediaQuery.of(context).size.width</span><span class="s2">;</span>
+    <span class="s2">final </span><span class="s0">height = MediaQuery.of(context).size.height</span><span class="s2">;</span>
+    <span class="s2">return </span><span class="s0">Padding(</span>
+      <span class="s0">padding:EdgeInsets.symmetric(vertical:height*</span><span class="s4">0.03</span><span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">child: SizedBox(</span>
+        <span class="s0">height: height*</span><span class="s4">0.05</span><span class="s2">,</span>
+        <span class="s0">child:ListView.builder(</span>
+          <span class="s0">scrollDirection: Axis.horizontal</span><span class="s2">,</span>
+          <span class="s0">itemCount: categories.length</span><span class="s2">,</span>
+           <span class="s0">itemBuilder: (context</span><span class="s2">,</span><span class="s0">index) =&gt; buildCategory(index)</span><span class="s2">,</span>
+          <span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+
+  <span class="s0">Widget buildCategory(int index) {</span>
+    <span class="s2">final </span><span class="s0">width = MediaQuery.of(context).size.width</span><span class="s2">;</span>
+    <span class="s2">final </span><span class="s0">height = MediaQuery.of(context).size.height</span><span class="s2">;</span>
+    <span class="s2">return </span><span class="s0">GestureDetector(</span>
+      <span class="s0">onTap: (){</span>
+        <span class="s0">setState(() {</span>
+          <span class="s0">selectedIndex = index</span><span class="s2">;</span>
+        <span class="s0">})</span><span class="s2">;</span>
+      <span class="s0">}</span><span class="s2">,</span>
+        <span class="s0">child: Padding(</span>
+        <span class="s0">padding:EdgeInsets.symmetric(horizontal: width*</span><span class="s4">0.05</span><span class="s0">)</span><span class="s2">,</span>
+        <span class="s0">child: Column(</span>
+          <span class="s0">crossAxisAlignment: CrossAxisAlignment.start</span><span class="s2">,</span>
+          <span class="s0">children: &lt;Widget&gt;[</span>
+            <span class="s0">Text(categories[index]</span><span class="s2">,</span>
+            <span class="s0">style: TextStyle(</span>
+              <span class="s0">fontWeight: FontWeight.bold</span><span class="s2">,</span>
+              <span class="s0">color: selectedIndex == index ? kTextColor : kTextLightColor</span><span class="s2">,</span>
+            <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">)</span><span class="s2">,</span>
+               <span class="s0">Container(</span>
+                 <span class="s0">margin: EdgeInsets.only(top:</span><span class="s4">5</span><span class="s0">)</span><span class="s2">, </span><span class="s3">//top padding 5</span>
+                 <span class="s0">height: </span><span class="s4">2</span><span class="s2">,</span>
+                 <span class="s0">width: width*</span><span class="s4">0.07</span><span class="s2">,</span>
+                 <span class="s0">color: selectedIndex == index ? Colors.black : Colors.transparent</span><span class="s2">,</span>
+
+               <span class="s0">)</span><span class="s2">,</span>
+          <span class="s0">]</span><span class="s2">,</span>
+        <span class="s0">)</span><span class="s2">,</span>
+      <span class="s0">)</span><span class="s2">,</span>
+    <span class="s0">)</span><span class="s2">;</span>
+  <span class="s0">}</span>
+<span class="s0">}</span></pre>
+</body>
+</html>
